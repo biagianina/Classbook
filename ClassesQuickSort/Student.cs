@@ -7,6 +7,7 @@ namespace ClassesQuickSort
     public class Student
     {
         readonly string name;
+        double grade;
         Subject[] subjectGrades = new Subject[0];
 
 
@@ -15,7 +16,7 @@ namespace ClassesQuickSort
             this.name = name;
         }
 
-        public void Grade(string subject, decimal grade)
+        public void Grade(string subject, double grade)
         {
             if (grade > 0 && grade <= 10)
             {
@@ -47,7 +48,7 @@ namespace ClassesQuickSort
             }
         }
 
-        public decimal BiggestSubjectGrade(string subject)
+        public double BiggestSubjectGrade(string subject)
         {
             for (int i = 0; i < subjectGrades.Length; i++)
             {
@@ -60,18 +61,7 @@ namespace ClassesQuickSort
             return 0;
         }
 
-        public decimal AverageGrade()
-        {
-            decimal result = 0;
-            for (int i = 0; i < subjectGrades.Length; i++)
-            {
-                result += subjectGrades[i].AverageSubjectGrade();
-            }
-
-            return result / subjectGrades.Length;
-        }
-
-        public decimal AverageSubjectGrade(string subject)
+        public double AverageSubjectGrade(string subject)
         {
             for (int i = 0; i < subjectGrades.Length; i++)
             {
