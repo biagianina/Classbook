@@ -10,7 +10,7 @@ namespace ClassesQuickSort.Tests
         {
             Student student = new Student("John");
             student.Grade("Biology", 9);
-            Assert.Equal(9, student.AverageGrade("Biology"));
+            Assert.Equal(9, student.AverageSubjectGrade("Biology"));
         }
 
         [Fact]
@@ -19,7 +19,35 @@ namespace ClassesQuickSort.Tests
             Student student = new Student("John");
             student.Grade("Biology", 9);
             student.Grade("Biology", 7);
-            Assert.Equal(8, student.AverageGrade("Biology"));
+            Assert.Equal(8, student.AverageSubjectGrade("Biology"));
+        }
+
+        [Fact]
+        public void MultipleSubjectsAverageGrade()
+        {
+            Student student = new Student("John");
+            student.Grade("Biology", 9);
+            student.Grade("Chemistry", 7);
+            Assert.Equal(9, student.AverageSubjectGrade("Biology"));
+        }
+
+        [Fact]
+        public void MultipleSubjectsAverageGradeOfOne()
+        {
+            Student student = new Student("John");
+            student.Grade("Biology", 9);
+            student.Grade("Chemistry", 7);
+            Assert.Equal(7, student.AverageSubjectGrade("Chemistry"));
+        }
+
+        [Fact]
+        public void MultipleSubjectsAverageGradeOfOneWithTwoGrades()
+        {
+            Student student = new Student("John");
+            student.Grade("Biology", 9);
+            student.Grade("Chemistry", 7);
+            student.Grade("Chemistry", 8);
+            Assert.Equal(7, student.AverageSubjectGrade("Chemistry"));
         }
 
     }
