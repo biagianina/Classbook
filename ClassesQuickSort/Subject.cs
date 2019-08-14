@@ -25,5 +25,18 @@ namespace ClassesQuickSort
             
         }
 
+        public double BiggestGrade()
+        {
+            double biggestGrade = 0;
+            for (int i = 0; i < grades.Length; i++)
+            {
+                if (biggestGrade < grades[i])
+                {
+                    biggestGrade = grades[i];
+                }
+            }
+
+            return biggestGrade;
+        }
     }
 }

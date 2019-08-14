@@ -50,5 +50,15 @@ namespace ClassesQuickSort.Tests
             Assert.Equal(7, student.AverageSubjectGrade("Chemistry"));
         }
 
+        [Fact]
+        public void BiggestGreadForOneSubject()
+        {
+            Student student = new Student("John");
+            student.Grade("Chemistry", 9);
+            student.Grade("Chemistry", 7);
+            student.Grade("Chemistry", 8);
+            Assert.Equal(9, student.BiggestSubjectGrade("Chemistry"));
+        }
+
     }
 }

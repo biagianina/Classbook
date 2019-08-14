@@ -48,6 +48,19 @@ namespace ClassesQuickSort
             }
         }
 
+        public double BiggestSubjectGrade(string subject)
+        {
+            for (int i = 0; i < subjectGrades.Length; i++)
+            {
+                if (subjectGrades[i].name == subject)
+                {
+                    return subjectGrades[i].BiggestGrade();
+                }
+
+            }
+            return 0;
+        }
+
         public double AverageSubjectGrade(string subject)
         {
             for (int i = 0; i < subjectGrades.Length; i++)
