@@ -47,17 +47,33 @@ namespace ClassesQuickSort.Tests
             student.Grade("Biology", 9);
             student.Grade("Chemistry", 7);
             student.Grade("Chemistry", 8);
-            Assert.Equal(7, student.AverageSubjectGrade("Chemistry"));
+            Assert.Equal(7.5d, student.AverageSubjectGrade("Chemistry"));
         }
 
         [Fact]
         public void BiggestGreadForOneSubject()
         {
             Student student = new Student("John");
-            student.Grade("Chemistry", 9);
+            student.Grade("Biology", 9);
             student.Grade("Chemistry", 7);
             student.Grade("Chemistry", 8);
-            Assert.Equal(9, student.BiggestSubjectGrade("Chemistry"));
+            Assert.Equal(8, student.BiggestSubjectGrade("Chemistry"));
+        }
+
+        [Fact]
+        public void AverageGradeForStudent()
+        {
+            Student student = new Student("John");
+            student.Grade("Chemistry", 10);
+            student.Grade("Chemistry", 10);
+            student.Grade("Chemistry", 10);
+            student.Grade("Biology", 10);
+            student.Grade("Biology", 10);
+            student.Grade("Maths", 10);
+            student.Grade("English", 10);
+            student.Grade("English", 10);
+            student.Grade("Sports", 10);
+            Assert.Equal(10, student.AverageGrade());
         }
 
     }
