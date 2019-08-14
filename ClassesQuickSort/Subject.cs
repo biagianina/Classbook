@@ -7,15 +7,15 @@ namespace ClassesQuickSort
     public class Subject
     {
         public string name;
-        public double[] grades = new double[0];
-        double averageGrade;
+        public decimal[] grades = new decimal[0];
+        decimal averageGrade;
         public Subject(string subject)
         {
             this.name = subject;
             
         }
 
-        public double AverageSubjectGrade()
+        public decimal AverageSubjectGrade()
         {
             for (int i = 0; i < grades.Length; i++)
             {
@@ -25,9 +25,9 @@ namespace ClassesQuickSort
             
         }
 
-        public double BiggestGrade()
+        public decimal BiggestGrade()
         {
-            double biggestGrade = 0;
+            decimal biggestGrade = 0;
             for (int i = 0; i < grades.Length; i++)
             {
                 if (biggestGrade < grades[i])
