@@ -6,51 +6,48 @@ namespace ClassesQuickSort
 {
     public class Student
     {
-        readonly string name;
-        double grade;
         Subject[] subjectGrades = new Subject[0];
-
 
         public Student(string name)
         {
-            this.name = name;
+            this.Name = name;
         }
 
+        public string Name { get; }
+
         public void Grade(string subject, double grade)
-        {
-            bool exist = false;
-            if (grade > 0 && grade <= 10)
             {
-                if (subjectGrades.Length == 0)
+            bool exist = false;
+            const int biggestGrade = 10;
+            if (grade <= 0 || grade > biggestGrade)
+            {
+                return;
+            }
+
+            if (subjectGrades.Length == 0)
+            {
+                Array.Resize(ref subjectGrades, subjectGrades.Length + 1);
+                subjectGrades[subjectGrades.Length - 1] = new Subject(subject);
+                subjectGrades[subjectGrades.Length - 1].AddGrade(grade);
+            }
+            else
+            {
+                for (int i = 0; i < subjectGrades.Length; i++)
+                {
+                    if (subjectGrades[i].Name == subject)
+                    {
+                        subjectGrades[subjectGrades.Length - 1].AddGrade(grade);
+                        exist = true;
+                        break;
+                    }
+                }
+
+                if (!exist)
                 {
                     Array.Resize(ref subjectGrades, subjectGrades.Length + 1);
                     subjectGrades[subjectGrades.Length - 1] = new Subject(subject);
-                    Array.Resize(ref subjectGrades[subjectGrades.Length - 1].grades, subjectGrades[subjectGrades.Length - 1].grades.Length + 1);
-                    subjectGrades[subjectGrades.Length - 1].grades[subjectGrades[subjectGrades.Length - 1].grades.Length - 1] = grade;
+                    subjectGrades[subjectGrades.Length - 1].AddGrade(grade);
                 }
-                else
-                {
-                    for (int i = 0; i < subjectGrades.Length; i++)
-                    {
-                        if (subjectGrades[i].name == subject)
-                        {
-                            Array.Resize(ref subjectGrades[subjectGrades.Length - 1].grades, subjectGrades[subjectGrades.Length - 1].grades.Length + 1);
-                            subjectGrades[subjectGrades.Length - 1].grades[subjectGrades[subjectGrades.Length - 1].grades.Length - 1] = grade;
-                            exist = true;
-                            break;
-                        }
- 
-                    }
-
-                    if (!exist)
-                    {
-                        Array.Resize(ref subjectGrades, subjectGrades.Length + 1);
-                        subjectGrades[subjectGrades.Length - 1] = new Subject(subject);
-                        Array.Resize(ref subjectGrades[subjectGrades.Length - 1].grades, subjectGrades[subjectGrades.Length - 1].grades.Length + 1);
-                        subjectGrades[subjectGrades.Length - 1].grades[subjectGrades[subjectGrades.Length - 1].grades.Length - 1] = grade;
-                    }
-                }
-  
             }
         }
 
@@ -58,12 +55,12 @@ namespace ClassesQuickSort
         {
             for (int i = 0; i < subjectGrades.Length; i++)
             {
-                if (subjectGrades[i].name == subject)
+                if (subjectGrades[i].Name == subject)
                 {
                     return subjectGrades[i].BiggestGrade();
                 }
-
             }
+
             return 0;
         }
 
@@ -82,12 +79,12 @@ namespace ClassesQuickSort
         {
             for (int i = 0; i < subjectGrades.Length; i++)
             {
-                if (subjectGrades[i].name == subject)
+                if (subjectGrades[i].Name == subject)
                 {
                     return subjectGrades[i].AverageSubjectGrade();
                 }
-
             }
+
             return 0;
         }
     }

@@ -64,17 +64,16 @@ namespace ClassesQuickSort.Tests
         public void AverageGradeForStudent()
         {
             Student student = new Student("John");
-            student.Grade("Chemistry", 10);
-            student.Grade("Chemistry", 10);
-            student.Grade("Chemistry", 10);
+            student.Grade("Chemistry", 5);
+            student.Grade("Chemistry", 5);
+            student.Grade("Chemistry", 5);
             student.Grade("Biology", 10);
             student.Grade("Biology", 10);
             student.Grade("Maths", 10);
             student.Grade("English", 10);
             student.Grade("English", 10);
-            student.Grade("Sports", 10);
-            Assert.Equal(10, student.AverageGrade());
+            student.Grade("Sports", 5);
+            Assert.Equal(8, student.AverageGrade());
         }
-
     }
 }
