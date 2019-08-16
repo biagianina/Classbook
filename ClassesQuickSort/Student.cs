@@ -6,14 +6,13 @@ namespace ClassesQuickSort
 {
     public class Student
     {
+        public string Name;
         Subject[] subjects = new Subject[0];
 
         public Student(string name)
         {
             this.Name = name;
         }
-
-        public string Name { get; }
 
         public void Grade(string subject, double grade)
         {

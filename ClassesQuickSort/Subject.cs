@@ -6,20 +6,18 @@ namespace ClassesQuickSort
 {
     public class Subject
     {
+        public string Name;
         double[] grades = new double[0];
 
         public Subject(string subject)
         {
-            Name = subject;
+            this.Name = subject;
         }
 
-        public string Name { get; set; }
-
-        public double[] AddGrade(double grade)
+        public void AddGrade(double grade)
         {
             Array.Resize(ref grades, newSize: grades.Length + 1);
             grades[grades.Length - 1] = grade;
-            return grades;
         }
 
         public double AverageSubjectGrade()

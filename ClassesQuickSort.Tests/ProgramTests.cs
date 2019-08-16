@@ -77,82 +77,22 @@ namespace ClassesQuickSort.Tests
         }
 
         [Fact]
-        public void ClassbookOfFourAverageGradeOfStudent()
-        {
-            Classbook classbook = new Classbook(4);
-            classbook.CreateStudents("John");
-            classbook.CreateStudents("Marry");
-            classbook.CreateStudents("Linda");
-            classbook.CreateStudents("Mike");
-            classbook.GiveGrade("John", "Biology", 6);
-            classbook.GiveGrade("John", "Biology", 8);
-            classbook.GiveGrade("John", "Chemistry", 8);
-            classbook.GiveGrade("Marry", "Maths", 10);
-            classbook.GiveGrade("Marry", "Biology", 8);
-            classbook.GiveGrade("Marry", "Chemistry", 8);
-            classbook.GiveGrade("Linda", "Maths", 7);
-            classbook.GiveGrade("Linda", "Biology", 5);
-            classbook.GiveGrade("Mike", "Chemistry", 10);
-            Assert.Equal(6, classbook.StudentAverageGrade("Linda"));
-        }
-
-        [Fact]
-        public void ClassbookOfFourAverageGradeOfStudentAtAsubject()
-        {
-            Classbook classbook = new Classbook(4);
-            classbook.CreateStudents("John");
-            classbook.CreateStudents("Marry");
-            classbook.CreateStudents("Linda");
-            classbook.CreateStudents("Mike");
-            classbook.GiveGrade("John", "Biology", 6);
-            classbook.GiveGrade("John", "Biology", 8);
-            classbook.GiveGrade("John", "Chemistry", 8);
-            classbook.GiveGrade("Marry", "Maths", 10);
-            classbook.GiveGrade("Marry", "Biology", 8);
-            classbook.GiveGrade("Marry", "Chemistry", 8);
-            classbook.GiveGrade("Linda", "Maths", 7);
-            classbook.GiveGrade("Linda", "Biology", 5);
-            classbook.GiveGrade("Mike", "Chemistry", 10);
-            Assert.Equal(7, classbook.StudentSubjectAverageGrade("John", "Biology"));
-        }
-
-        [Fact]
-        public void ClassbookOfFourBiggestGradeOfStudentAtAsubject()
-        {
-            Classbook classbook = new Classbook(4);
-            classbook.CreateStudents("John");
-            classbook.CreateStudents("Marry");
-            classbook.CreateStudents("Linda");
-            classbook.CreateStudents("Mike");
-            classbook.GiveGrade("John", "Biology", 6);
-            classbook.GiveGrade("John", "Biology", 8);
-            classbook.GiveGrade("John", "Chemistry", 8);
-            classbook.GiveGrade("Marry", "Maths", 10);
-            classbook.GiveGrade("Marry", "Biology", 8);
-            classbook.GiveGrade("Marry", "Chemistry", 8);
-            classbook.GiveGrade("Linda", "Maths", 7);
-            classbook.GiveGrade("Linda", "Biology", 5);
-            classbook.GiveGrade("Mike", "Chemistry", 10);
-            Assert.Equal(8, classbook.StudentSubjectBiggestGrade("John", "Biology"));
-        }
-
-        [Fact]
         public void ClassbookOfFourRankingWithGrade()
         {
             Classbook classbook = new Classbook(4);
-            classbook.CreateStudents("John");
-            classbook.CreateStudents("Marry");
-            classbook.CreateStudents("Linda");
-            classbook.CreateStudents("Mike");
-            classbook.GiveGrade("John", "Biology", 6);
-            classbook.GiveGrade("John", "Biology", 8);
-            classbook.GiveGrade("John", "Chemistry", 8);
-            classbook.GiveGrade("Marry", "Maths", 10);
-            classbook.GiveGrade("Marry", "Biology", 8);
-            classbook.GiveGrade("Marry", "Chemistry", 8);
-            classbook.GiveGrade("Linda", "Maths", 7);
-            classbook.GiveGrade("Linda", "Biology", 5);
-            classbook.GiveGrade("Mike", "Chemistry", 10);
+            classbook.CreateStudent("John");
+            classbook.CreateStudent("Marry");
+            classbook.CreateStudent("Linda");
+            classbook.CreateStudent("Mike");
+            classbook.Students[0].Grade("Biology", 6);
+            classbook.Students[0].Grade("Biology", 8);
+            classbook.Students[0].Grade("Chemistry", 8);
+            classbook.Students[1].Grade("Maths", 10);
+            classbook.Students[1].Grade("Biology", 8);
+            classbook.Students[1].Grade("Chemistry", 8);
+            classbook.Students[2].Grade("Maths", 7);
+            classbook.Students[2].Grade("Biology", 5);
+            classbook.Students[3].Grade("Chemistry", 10);
             Assert.Equal("Mike : 10", classbook.Rank()[0]);
             Assert.Equal("Marry : 8.66666666666667", classbook.Rank()[1]);
             Assert.Equal("John : 7.5", classbook.Rank()[2]);
