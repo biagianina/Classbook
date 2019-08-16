@@ -61,5 +61,18 @@ namespace ClassesQuickSort
 
             return 0;
         }
+
+        public double StudentSubjectBiggestGrade(string student, string subject)
+        {
+            for (int i = 0; i < students.Length; i++)
+            {
+                if (students[i].Name == student)
+                {
+                    return students[i].BiggestSubjectGrade(subject);
+                }
+            }
+
+            return 0;
+        }
     }
 }
