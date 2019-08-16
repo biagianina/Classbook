@@ -16,7 +16,6 @@ namespace ClassesQuickSort
 
         public void Grade(string subject, double grade)
         {
-            bool exist = false;
             const int biggestGrade = 10;
             if (grade <= 0 || grade > biggestGrade)
             {
@@ -25,27 +24,17 @@ namespace ClassesQuickSort
 
             if (subjects.Length == 0)
             {
-                Array.Resize(ref subjects, subjects.Length + 1);
-                subjects[subjects.Length - 1] = new Subject(subject);
-                subjects[subjects.Length - 1].AddGrade(grade);
+                CreateSubject(subject, grade);
             }
             else
             {
-                for (int i = 0; i < subjects.Length; i++)
+                if (SubjectExists(subject))
                 {
-                    if (subjects[i].Name == subject)
-                    {
-                        subjects[subjects.Length - 1].AddGrade(grade);
-                        exist = true;
-                        break;
-                    }
-                }
-
-                if (!exist)
-                {
-                    Array.Resize(ref subjects, subjects.Length + 1);
-                    subjects[subjects.Length - 1] = new Subject(subject);
                     subjects[subjects.Length - 1].AddGrade(grade);
+                }
+                else
+                {
+                    CreateSubject(subject, grade);
                 }
             }
         }
@@ -85,6 +74,26 @@ namespace ClassesQuickSort
             }
 
             return 0;
+        }
+
+        private void CreateSubject(string subject, double grade)
+        {
+            Array.Resize(ref subjects, subjects.Length + 1);
+            subjects[subjects.Length - 1] = new Subject(subject);
+            subjects[subjects.Length - 1].AddGrade(grade);
+        }
+
+        private bool SubjectExists(string subject)
+        {
+            for (int i = 0; i < subjects.Length; i++)
+            {
+                if (subjects[i].Name == subject)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

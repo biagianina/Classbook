@@ -80,10 +80,10 @@ namespace ClassesQuickSort.Tests
         public void ClassbookOfFourRankingWithGrade()
         {
             Classbook classbook = new Classbook();
-            classbook.AddStudent("John");
-            classbook.AddStudent("Marry");
-            classbook.AddStudent("Linda");
-            classbook.AddStudent("Mike");
+            classbook.AddStudent(new Student("John"));
+            classbook.AddStudent(new Student("Marry"));
+            classbook.AddStudent(new Student("Linda"));
+            classbook.AddStudent(new Student("Mike"));
             classbook.Students[0].Grade("Biology", 6);
             classbook.Students[0].Grade("Biology", 8);
             classbook.Students[0].Grade("Chemistry", 8);
