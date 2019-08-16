@@ -95,5 +95,25 @@ namespace ClassesQuickSort.Tests
             classbook.GiveGrade("Mike", "Chemistry", 10);
             Assert.Equal(6, classbook.StudentAverageGrade("Linda"));
         }
+
+        [Fact]
+        public void ClassbookOfFourAverageGradeOfStudentAtAsubject()
+        {
+            Classbook classbook = new Classbook(4);
+            classbook.CreateStudent("John");
+            classbook.CreateStudent("Marry");
+            classbook.CreateStudent("Linda");
+            classbook.CreateStudent("Mike");
+            classbook.GiveGrade("John", "Biology", 6);
+            classbook.GiveGrade("John", "Biology", 8);
+            classbook.GiveGrade("John", "Chemistry", 8);
+            classbook.GiveGrade("Marry", "Maths", 10);
+            classbook.GiveGrade("Marry", "Biology", 8);
+            classbook.GiveGrade("Marry", "Chemistry", 8);
+            classbook.GiveGrade("Linda", "Maths", 7);
+            classbook.GiveGrade("Linda", "Biology", 5);
+            classbook.GiveGrade("Mike", "Chemistry", 10);
+            Assert.Equal(7, classbook.StudentSubjectAverageGrade("John", "Biology"));
+        }
     }
 }
