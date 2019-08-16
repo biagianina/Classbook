@@ -8,21 +8,10 @@ namespace ClassesQuickSort
     {
         public Student[] Students = new Student[0];
 
-        public Classbook(int numberOfStudents)
+        public void AddStudent(string name)
         {
-            Array.Resize(ref Students, Students.Length + numberOfStudents);
-        }
-
-        public void CreateStudent(string name)
-        {
-           for (int i = 0; i < Students.Length; i++)
-            {
-                if (Students[i] == null)
-                {
-                    Students[i] = new Student(name);
-                    break;
-                }
-            }
+            Array.Resize(ref Students, Students.Length + 1);
+            Students[Students.Length - 1] = new Student(name);
         }
 
         public string[] Rank()

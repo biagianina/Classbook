@@ -79,11 +79,11 @@ namespace ClassesQuickSort.Tests
         [Fact]
         public void ClassbookOfFourRankingWithGrade()
         {
-            Classbook classbook = new Classbook(4);
-            classbook.CreateStudent("John");
-            classbook.CreateStudent("Marry");
-            classbook.CreateStudent("Linda");
-            classbook.CreateStudent("Mike");
+            Classbook classbook = new Classbook();
+            classbook.AddStudent("John");
+            classbook.AddStudent("Marry");
+            classbook.AddStudent("Linda");
+            classbook.AddStudent("Mike");
             classbook.Students[0].Grade("Biology", 6);
             classbook.Students[0].Grade("Biology", 8);
             classbook.Students[0].Grade("Chemistry", 8);
