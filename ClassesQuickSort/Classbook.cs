@@ -13,7 +13,7 @@ namespace ClassesQuickSort
             Array.Resize(ref students, students.Length + numberOfStudents);
         }
 
-        public void CreateStudent(string name)
+        public void CreateStudents(string name)
         {
            for (int i = 0; i < students.Length; i++)
             {
@@ -75,14 +75,16 @@ namespace ClassesQuickSort
             return 0;
         }
 
-        public Student[] Ranking()
+        public string[] Rank()
         {
-            if (students == null)
+            string[] rank = new string[students.Length];
+            Student[] rankedStudents = QuickSort(students, 0, students.Length - 1);
+            for (int i = 0; i < rankedStudents.Length; i++)
             {
-                return null;
+                rank[i] = rankedStudents[i].Name + " : " + Convert.ToString(students[i].AverageGrade());
             }
 
-            return QuickSort(students, 0, students.Length - 1);
+            return rank;
         }
 
         static Student[] QuickSort(Student[] students, int left, int right)

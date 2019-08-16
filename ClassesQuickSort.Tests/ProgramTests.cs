@@ -80,10 +80,10 @@ namespace ClassesQuickSort.Tests
         public void ClassbookOfFourAverageGradeOfStudent()
         {
             Classbook classbook = new Classbook(4);
-            classbook.CreateStudent("John");
-            classbook.CreateStudent("Marry");
-            classbook.CreateStudent("Linda");
-            classbook.CreateStudent("Mike");
+            classbook.CreateStudents("John");
+            classbook.CreateStudents("Marry");
+            classbook.CreateStudents("Linda");
+            classbook.CreateStudents("Mike");
             classbook.GiveGrade("John", "Biology", 6);
             classbook.GiveGrade("John", "Biology", 8);
             classbook.GiveGrade("John", "Chemistry", 8);
@@ -100,10 +100,10 @@ namespace ClassesQuickSort.Tests
         public void ClassbookOfFourAverageGradeOfStudentAtAsubject()
         {
             Classbook classbook = new Classbook(4);
-            classbook.CreateStudent("John");
-            classbook.CreateStudent("Marry");
-            classbook.CreateStudent("Linda");
-            classbook.CreateStudent("Mike");
+            classbook.CreateStudents("John");
+            classbook.CreateStudents("Marry");
+            classbook.CreateStudents("Linda");
+            classbook.CreateStudents("Mike");
             classbook.GiveGrade("John", "Biology", 6);
             classbook.GiveGrade("John", "Biology", 8);
             classbook.GiveGrade("John", "Chemistry", 8);
@@ -120,10 +120,10 @@ namespace ClassesQuickSort.Tests
         public void ClassbookOfFourBiggestGradeOfStudentAtAsubject()
         {
             Classbook classbook = new Classbook(4);
-            classbook.CreateStudent("John");
-            classbook.CreateStudent("Marry");
-            classbook.CreateStudent("Linda");
-            classbook.CreateStudent("Mike");
+            classbook.CreateStudents("John");
+            classbook.CreateStudents("Marry");
+            classbook.CreateStudents("Linda");
+            classbook.CreateStudents("Mike");
             classbook.GiveGrade("John", "Biology", 6);
             classbook.GiveGrade("John", "Biology", 8);
             classbook.GiveGrade("John", "Chemistry", 8);
@@ -137,13 +137,13 @@ namespace ClassesQuickSort.Tests
         }
 
         [Fact]
-        public void ClassbookOfFourRanking()
+        public void ClassbookOfFourRankingWithGrade()
         {
             Classbook classbook = new Classbook(4);
-            classbook.CreateStudent("John");
-            classbook.CreateStudent("Marry");
-            classbook.CreateStudent("Linda");
-            classbook.CreateStudent("Mike");
+            classbook.CreateStudents("John");
+            classbook.CreateStudents("Marry");
+            classbook.CreateStudents("Linda");
+            classbook.CreateStudents("Mike");
             classbook.GiveGrade("John", "Biology", 6);
             classbook.GiveGrade("John", "Biology", 8);
             classbook.GiveGrade("John", "Chemistry", 8);
@@ -153,18 +153,10 @@ namespace ClassesQuickSort.Tests
             classbook.GiveGrade("Linda", "Maths", 7);
             classbook.GiveGrade("Linda", "Biology", 5);
             classbook.GiveGrade("Mike", "Chemistry", 10);
-            var expectedRanking = new Student[4];
-            {
-                expectedRanking[0] = new Student("Mike");
-                expectedRanking[1] = new Student("Marry");
-                expectedRanking[2] = new Student("John");
-                expectedRanking[3] = new Student("Linda");
-            }
-
-            Assert.Equal(expectedRanking[0].Name, classbook.Ranking()[0].Name);
-            Assert.Equal(expectedRanking[1].Name, classbook.Ranking()[1].Name);
-            Assert.Equal(expectedRanking[2].Name, classbook.Ranking()[2].Name);
-            Assert.Equal(expectedRanking[3].Name, classbook.Ranking()[3].Name);
+            Assert.Equal("Mike : 10", classbook.Rank()[0]);
+            Assert.Equal("Marry : 8.66666666666667", classbook.Rank()[1]);
+            Assert.Equal("John : 7.5", classbook.Rank()[2]);
+            Assert.Equal("Linda : 6", classbook.Rank()[3]);
         }
     }
 }
