@@ -6,8 +6,8 @@ namespace ClassesQuickSort
 {
     public class Subject
     {
-        double averageGrade;
         double[] grades = new double[0];
+        double averageGrade;
 
         public Subject(string subject)
         {
@@ -33,7 +33,7 @@ namespace ClassesQuickSort
             return averageGrade / grades.Length;
         }
 
-        public double BiggestGrade()
+        public double BiggestGradeOfSubject()
         {
             double biggestGrade = 0;
             for (int i = 0; i < grades.Length; i++)
