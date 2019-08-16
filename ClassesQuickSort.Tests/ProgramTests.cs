@@ -153,7 +153,7 @@ namespace ClassesQuickSort.Tests
             classbook.GiveGrade("Linda", "Maths", 7);
             classbook.GiveGrade("Linda", "Biology", 5);
             classbook.GiveGrade("Mike", "Chemistry", 10);
-            Student[] expectedRanking = new Student[4];
+            var expectedRanking = new Student[4];
             {
                 expectedRanking[0] = new Student("Mike");
                 expectedRanking[1] = new Student("Marry");
@@ -161,7 +161,10 @@ namespace ClassesQuickSort.Tests
                 expectedRanking[3] = new Student("Linda");
             }
 
-            Assert.Equal(expectedRanking, classbook.Ranking());
+            Assert.Equal(expectedRanking[0].Name, classbook.Ranking()[0].Name);
+            Assert.Equal(expectedRanking[1].Name, classbook.Ranking()[1].Name);
+            Assert.Equal(expectedRanking[2].Name, classbook.Ranking()[2].Name);
+            Assert.Equal(expectedRanking[3].Name, classbook.Ranking()[3].Name);
         }
     }
 }
