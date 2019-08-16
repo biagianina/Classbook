@@ -135,5 +135,33 @@ namespace ClassesQuickSort.Tests
             classbook.GiveGrade("Mike", "Chemistry", 10);
             Assert.Equal(8, classbook.StudentSubjectBiggestGrade("John", "Biology"));
         }
+
+        [Fact]
+        public void ClassbookOfFourRanking()
+        {
+            Classbook classbook = new Classbook(4);
+            classbook.CreateStudent("John");
+            classbook.CreateStudent("Marry");
+            classbook.CreateStudent("Linda");
+            classbook.CreateStudent("Mike");
+            classbook.GiveGrade("John", "Biology", 6);
+            classbook.GiveGrade("John", "Biology", 8);
+            classbook.GiveGrade("John", "Chemistry", 8);
+            classbook.GiveGrade("Marry", "Maths", 10);
+            classbook.GiveGrade("Marry", "Biology", 8);
+            classbook.GiveGrade("Marry", "Chemistry", 8);
+            classbook.GiveGrade("Linda", "Maths", 7);
+            classbook.GiveGrade("Linda", "Biology", 5);
+            classbook.GiveGrade("Mike", "Chemistry", 10);
+            Student[] expectedRanking = new Student[4];
+            {
+                expectedRanking[0] = new Student("Mike");
+                expectedRanking[1] = new Student("Marry");
+                expectedRanking[2] = new Student("John");
+                expectedRanking[3] = new Student("Linda");
+            }
+
+            Assert.Equal(expectedRanking, classbook.Ranking());
+        }
     }
 }

@@ -74,5 +74,57 @@ namespace ClassesQuickSort
 
             return 0;
         }
+
+        public Student[] Ranking()
+        {
+            if (students == null)
+            {
+                return null;
+            }
+
+            return QuickSort(students, 0, students.Length - 1);
+        }
+
+        static Student[] QuickSort(Student[] students, int left, int right)
+        {
+            int i = left;
+            int j = right;
+            var pivot = students[(i + j) / 2].AverageGrade();
+
+            if (i <= j)
+            {
+                while (students[i].AverageGrade() > pivot)
+                {
+                    i++;
+                }
+
+                while (pivot > students[j].AverageGrade())
+                {
+                    j--;
+                }
+
+                if (i <= j)
+                {
+                    var temp = students[j];
+                    students[j] = students[i];
+                    students[i] = temp;
+
+                    i++;
+                    j--;
+                }
+
+                if (left < j)
+                {
+                    QuickSort(students, left, j);
+                }
+
+                if (i < right)
+                {
+                    QuickSort(students, i, right);
+                }
+            }
+
+            return students;
+        }
     }
 }

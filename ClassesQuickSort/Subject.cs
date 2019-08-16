@@ -7,7 +7,6 @@ namespace ClassesQuickSort
     public class Subject
     {
         double[] grades = new double[0];
-        double averageGrade;
 
         public Subject(string subject)
         {
@@ -25,6 +24,7 @@ namespace ClassesQuickSort
 
         public double AverageSubjectGrade()
         {
+            double averageGrade = 0;
             for (int i = 0; i < grades.Length; i++)
             {
                 averageGrade += grades[i];
