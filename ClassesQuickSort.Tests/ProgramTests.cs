@@ -6,73 +6,79 @@ namespace ClassesQuickSort.Tests
     public class ProgramTests
     {
         [Fact]
-        public void SingleGradeAverageGrade()
+        public void SingleGradeAverageSubjectGrade()
         {
             Student student = new Student("John");
-            student.Grade("Biology", 9);
-            Assert.Equal(9, student.AverageSubjectGrade("Biology"));
+            student.ReceiveGrade("Biology", 9);
+            var currentSubject = student.SubjectExists("Biology");
+            Assert.Equal(9, currentSubject.AverageSubjectGrade());
         }
 
         [Fact]
         public void MultipleGradesAverageGrade()
         {
             Student student = new Student("John");
-            student.Grade("Biology", 9);
-            student.Grade("Biology", 7);
-            Assert.Equal(8, student.AverageSubjectGrade("Biology"));
+            student.ReceiveGrade("Biology", 9);
+            student.ReceiveGrade("Biology", 7);
+            var currentSubject = student.SubjectExists("Biology");
+            Assert.Equal(8, currentSubject.AverageSubjectGrade());
         }
 
         [Fact]
         public void MultipleSubjectsAverageGrade()
         {
             Student student = new Student("John");
-            student.Grade("Biology", 9);
-            student.Grade("Chemistry", 7);
-            Assert.Equal(9, student.AverageSubjectGrade("Biology"));
+            student.ReceiveGrade("Biology", 9);
+            student.ReceiveGrade("Chemistry", 7);
+            var currentSubject = student.SubjectExists("Biology");
+            Assert.Equal(9, currentSubject.AverageSubjectGrade());
         }
 
         [Fact]
         public void MultipleSubjectsAverageGradeOfOne()
         {
             Student student = new Student("John");
-            student.Grade("Biology", 9);
-            student.Grade("Chemistry", 7);
-            Assert.Equal(7, student.AverageSubjectGrade("Chemistry"));
+            student.ReceiveGrade("Biology", 9);
+            student.ReceiveGrade("Chemistry", 7);
+            var currentSubject = student.SubjectExists("Chemistry");
+            Assert.Equal(7, currentSubject.AverageSubjectGrade());
         }
 
         [Fact]
         public void MultipleSubjectsAverageGradeOfOneWithTwoGrades()
         {
             Student student = new Student("John");
-            student.Grade("Biology", 9);
-            student.Grade("Chemistry", 7);
-            student.Grade("Chemistry", 8);
-            Assert.Equal(7.5d, student.AverageSubjectGrade("Chemistry"));
+            student.ReceiveGrade("Biology", 9);
+            student.ReceiveGrade("Chemistry", 7);
+            student.ReceiveGrade("Chemistry", 8);
+            var currentSubject = student.SubjectExists("Chemistry");
+            Assert.Equal(7.5, currentSubject.AverageSubjectGrade());
         }
 
         [Fact]
         public void BiggestGreadForOneSubject()
         {
             Student student = new Student("John");
-            student.Grade("Biology", 9);
-            student.Grade("Chemistry", 7);
-            student.Grade("Chemistry", 8);
-            Assert.Equal(8, student.BiggestSubjectGrade("Chemistry"));
+            student.ReceiveGrade("Biology", 9);
+            student.ReceiveGrade("Chemistry", 7);
+            student.ReceiveGrade("Chemistry", 8);
+            var currentSubject = student.SubjectExists("Chemistry");
+            Assert.Equal(8, currentSubject.BiggestGradeOfSubject());
         }
 
         [Fact]
         public void AverageGradeForStudent()
         {
             Student student = new Student("John");
-            student.Grade("Chemistry", 5);
-            student.Grade("Chemistry", 5);
-            student.Grade("Chemistry", 5);
-            student.Grade("Biology", 10);
-            student.Grade("Biology", 10);
-            student.Grade("Maths", 10);
-            student.Grade("English", 10);
-            student.Grade("English", 10);
-            student.Grade("Sports", 5);
+            student.ReceiveGrade("Chemistry", 5);
+            student.ReceiveGrade("Chemistry", 5);
+            student.ReceiveGrade("Chemistry", 5);
+            student.ReceiveGrade("Biology", 10);
+            student.ReceiveGrade("Biology", 10);
+            student.ReceiveGrade("Maths", 10);
+            student.ReceiveGrade("English", 10);
+            student.ReceiveGrade("English", 10);
+            student.ReceiveGrade("Sports", 5);
             Assert.Equal(8, student.AverageGrade());
         }
 
@@ -84,19 +90,72 @@ namespace ClassesQuickSort.Tests
             classbook.AddStudent(new Student("Marry"));
             classbook.AddStudent(new Student("Linda"));
             classbook.AddStudent(new Student("Mike"));
-            classbook.Students[0].Grade("Biology", 6);
-            classbook.Students[0].Grade("Biology", 8);
-            classbook.Students[0].Grade("Chemistry", 8);
-            classbook.Students[1].Grade("Maths", 10);
-            classbook.Students[1].Grade("Biology", 8);
-            classbook.Students[1].Grade("Chemistry", 8);
-            classbook.Students[2].Grade("Maths", 7);
-            classbook.Students[2].Grade("Biology", 5);
-            classbook.Students[3].Grade("Chemistry", 10);
-            Assert.Equal("Mike : 10", classbook.Rank()[0]);
-            Assert.Equal("Marry : 8.66666666666667", classbook.Rank()[1]);
-            Assert.Equal("John : 7.5", classbook.Rank()[2]);
-            Assert.Equal("Linda : 6", classbook.Rank()[3]);
+            var john = classbook.FindStudent("John");
+            var marry = classbook.FindStudent("Marry");
+            var linda = classbook.FindStudent("Linda");
+            var mike = classbook.FindStudent("Mike");
+            john.ReceiveGrade("Biology", 6);
+            john.ReceiveGrade("Biology", 8);
+            john.ReceiveGrade("Chemistry", 8);
+            marry.ReceiveGrade("Maths", 10);
+            marry.ReceiveGrade("Biology", 8);
+            marry.ReceiveGrade("Chemistry", 8);
+            linda.ReceiveGrade("Maths", 7);
+            linda.ReceiveGrade("Biology", 5);
+            mike.ReceiveGrade("Chemistry", 10);
+            Assert.Equal(1, classbook.Rank("Mike"));
+            Assert.Equal(2, classbook.Rank("Marry"));
+            Assert.Equal(3, classbook.Rank("John"));
+            Assert.Equal(4, classbook.Rank("Linda"));
+        }
+
+        [Fact]
+        public void AverageGradeForAStudentInClassbook()
+        {
+            Classbook classbook = new Classbook();
+            classbook.AddStudent(new Student("John"));
+            classbook.AddStudent(new Student("Marry"));
+            classbook.AddStudent(new Student("Linda"));
+            classbook.AddStudent(new Student("Mike"));
+            var john = classbook.FindStudent("John");
+            var marry = classbook.FindStudent("Marry");
+            var linda = classbook.FindStudent("Linda");
+            var mike = classbook.FindStudent("Mike");
+            john.ReceiveGrade("Biology", 6);
+            john.ReceiveGrade("Biology", 8);
+            john.ReceiveGrade("Chemistry", 8);
+            marry.ReceiveGrade("Maths", 10);
+            marry.ReceiveGrade("Biology", 8);
+            marry.ReceiveGrade("Chemistry", 8);
+            linda.ReceiveGrade("Maths", 7);
+            linda.ReceiveGrade("Biology", 5);
+            mike.ReceiveGrade("Chemistry", 10);
+            Assert.Equal(7.5, john.AverageGrade());
+        }
+
+        [Fact]
+        public void AverageSubjectGradeForAStudentInClassbook()
+        {
+            Classbook classbook = new Classbook();
+            classbook.AddStudent(new Student("John"));
+            classbook.AddStudent(new Student("Marry"));
+            classbook.AddStudent(new Student("Linda"));
+            classbook.AddStudent(new Student("Mike"));
+            var john = classbook.FindStudent("John");
+            var marry = classbook.FindStudent("Marry");
+            var linda = classbook.FindStudent("Linda");
+            var mike = classbook.FindStudent("Mike");
+            john.ReceiveGrade("Biology", 6);
+            john.ReceiveGrade("Biology", 8);
+            john.ReceiveGrade("Chemistry", 8);
+            marry.ReceiveGrade("Maths", 10);
+            marry.ReceiveGrade("Biology", 8);
+            marry.ReceiveGrade("Chemistry", 8);
+            linda.ReceiveGrade("Maths", 7);
+            linda.ReceiveGrade("Biology", 5);
+            mike.ReceiveGrade("Chemistry", 10);
+            var biology = john.SubjectExists("Biology");
+            Assert.Equal(7, biology.AverageSubjectGrade());
         }
     }
 }

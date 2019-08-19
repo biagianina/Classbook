@@ -6,12 +6,12 @@ namespace ClassesQuickSort
 {
     public class Subject
     {
-        public string Name;
+        readonly string name;
         double[] grades = new double[0];
 
         public Subject(string subject)
         {
-            this.Name = subject;
+            this.name = subject;
         }
 
         public void AddGrade(double grade)
@@ -43,6 +43,11 @@ namespace ClassesQuickSort
             }
 
             return biggestGrade;
+        }
+
+        public bool IsSubject(string subject)
+        {
+            return subject == name;
         }
     }
 }

@@ -6,24 +6,40 @@ namespace ClassesQuickSort
 {
     public class Classbook
     {
-        public Student[] Students = new Student[0];
+        Student[] students = new Student[0];
 
         public void AddStudent(Student student)
         {
-            Array.Resize(ref Students, Students.Length + 1);
-            Students[Students.Length - 1] = student;
+            Array.Resize(ref students, students.Length + 1);
+            students[students.Length - 1] = student;
         }
 
-        public string[] Rank()
+        public int Rank(string name)
         {
-            string[] rank = new string[Students.Length];
-            Student[] rankedStudents = QuickSort(Students, 0, Students.Length - 1);
+            string[] rank = new string[students.Length];
+            Student[] rankedStudents = QuickSort(students, 0, students.Length - 1);
             for (int i = 0; i < rankedStudents.Length; i++)
             {
-                rank[i] = rankedStudents[i].Name + " : " + Convert.ToString(Students[i].AverageGrade());
+                if (rankedStudents[i].IsStudent(name))
+                {
+                    return i + 1;
+                }
             }
 
-            return rank;
+            return 0;
+        }
+
+        public Student FindStudent(string name)
+        {
+            for (int i = 0; i < students.Length; i++)
+            {
+                if (students[i].IsStudent(name))
+                {
+                    return students[i];
+                }
+            }
+
+            return null;
         }
 
         static Student[] QuickSort(Student[] students, int left, int right)
