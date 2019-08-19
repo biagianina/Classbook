@@ -22,20 +22,13 @@ namespace ClassesQuickSort
                 return;
             }
 
-            if (subjects.Length == 0)
+            if (FindSubject(subject) != null)
             {
-                CreateSubject(subject, grade);
+                subjects[subjects.Length - 1].AddGrade(grade);
             }
             else
             {
-                if (SubjectExists(subject) != null)
-                {
-                    subjects[subjects.Length - 1].AddGrade(grade);
-                }
-                else
-                {
-                    CreateSubject(subject, grade);
-                }
+                CreateSubject(subject, grade);
             }
         }
 
@@ -50,9 +43,9 @@ namespace ClassesQuickSort
             return result / subjects.Length;
         }
 
-        public Subject SubjectExists(string subject)
+        public Subject FindSubject(string subject)
         {
-            for (int i = 0; i < subjects.Length; i++)
+            for (int i = 0; subjects != null && i < subjects.Length; i++)
             {
                 if (subjects[i].IsSubject(subject))
                 {

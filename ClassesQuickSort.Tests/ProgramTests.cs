@@ -10,7 +10,7 @@ namespace ClassesQuickSort.Tests
         {
             Student student = new Student("John");
             student.ReceiveGrade("Biology", 9);
-            var currentSubject = student.SubjectExists("Biology");
+            var currentSubject = student.FindSubject("Biology");
             Assert.Equal(9, currentSubject.AverageSubjectGrade());
         }
 
@@ -20,7 +20,7 @@ namespace ClassesQuickSort.Tests
             Student student = new Student("John");
             student.ReceiveGrade("Biology", 9);
             student.ReceiveGrade("Biology", 7);
-            var currentSubject = student.SubjectExists("Biology");
+            var currentSubject = student.FindSubject("Biology");
             Assert.Equal(8, currentSubject.AverageSubjectGrade());
         }
 
@@ -30,7 +30,7 @@ namespace ClassesQuickSort.Tests
             Student student = new Student("John");
             student.ReceiveGrade("Biology", 9);
             student.ReceiveGrade("Chemistry", 7);
-            var currentSubject = student.SubjectExists("Biology");
+            var currentSubject = student.FindSubject("Biology");
             Assert.Equal(9, currentSubject.AverageSubjectGrade());
         }
 
@@ -40,7 +40,7 @@ namespace ClassesQuickSort.Tests
             Student student = new Student("John");
             student.ReceiveGrade("Biology", 9);
             student.ReceiveGrade("Chemistry", 7);
-            var currentSubject = student.SubjectExists("Chemistry");
+            var currentSubject = student.FindSubject("Chemistry");
             Assert.Equal(7, currentSubject.AverageSubjectGrade());
         }
 
@@ -51,7 +51,7 @@ namespace ClassesQuickSort.Tests
             student.ReceiveGrade("Biology", 9);
             student.ReceiveGrade("Chemistry", 7);
             student.ReceiveGrade("Chemistry", 8);
-            var currentSubject = student.SubjectExists("Chemistry");
+            var currentSubject = student.FindSubject("Chemistry");
             Assert.Equal(7.5, currentSubject.AverageSubjectGrade());
         }
 
@@ -62,8 +62,8 @@ namespace ClassesQuickSort.Tests
             student.ReceiveGrade("Biology", 9);
             student.ReceiveGrade("Chemistry", 7);
             student.ReceiveGrade("Chemistry", 8);
-            var currentSubject = student.SubjectExists("Chemistry");
-            Assert.Equal(8, currentSubject.BiggestGradeOfSubject());
+            var currentSubject = student.FindSubject("Chemistry");
+            Assert.Equal(8, currentSubject.BiggestGrade());
         }
 
         [Fact]
@@ -154,7 +154,7 @@ namespace ClassesQuickSort.Tests
             linda.ReceiveGrade("Maths", 7);
             linda.ReceiveGrade("Biology", 5);
             mike.ReceiveGrade("Chemistry", 10);
-            var biology = john.SubjectExists("Biology");
+            var biology = john.FindSubject("Biology");
             Assert.Equal(7, biology.AverageSubjectGrade());
         }
     }

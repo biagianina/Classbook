@@ -31,7 +31,7 @@ namespace ClassesQuickSort
             return averageGrade / grades.Length;
         }
 
-        public double BiggestGradeOfSubject()
+        public double BiggestGrade()
         {
             double biggestGrade = 0;
             for (int i = 0; i < grades.Length; i++)

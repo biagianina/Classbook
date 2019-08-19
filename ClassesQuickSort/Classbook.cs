@@ -16,7 +16,6 @@ namespace ClassesQuickSort
 
         public int Rank(string name)
         {
-            string[] rank = new string[students.Length];
             Student[] rankedStudents = QuickSort(students, 0, students.Length - 1);
             for (int i = 0; i < rankedStudents.Length; i++)
             {
